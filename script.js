@@ -52,7 +52,7 @@ if (PostBox) {
   addImage.addEventListener('click',mainImg)
   
   var verTxt = document.createElement('a')
-  verTxt.setAttribute('href','https://people.well.com/user/keitht/Engaged UTF-8.zip')
+  verTxt.setAttribute('href','https://people.well.com/user/keitht/extension.html')
   verTxt.textContent += version
   verTxt.setAttribute('style','font-size:13px;display:inline;margin-left:20px;')
   chkDiv.append(verTxt)
