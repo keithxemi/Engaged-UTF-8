@@ -1,0 +1,39 @@
+{
+    "manifest_version": 2,
+    "name": "Engaged UTF-8",
+    "version": "0.1.6",
+    "description": "View and post Unicode on the WELL",
+    "icons": {
+        "128": "i/128.png",
+        "64": "i/64.png",
+        "32": "i/32.png",
+        "16": "i/16.png"
+    },
+    "browser_action": {
+        "default_icon": {
+            "32": "i/32.png",
+            "16": "i/16.png"
+        },
+        "default_title": "Engaged UTF-8"
+    },
+    "author": "keitht",
+    "background": {
+        "scripts": [
+            "background.js"
+        ]
+    },
+    "content_scripts": [
+        {
+            "matches": ["https://user.well.com/engaged.cgi*"],
+            "js": ["script.js"],
+            "run_at": "document_idle"
+        }
+    ],
+    "permissions": [
+        "https://user.well.com/engaged.cgi*",
+        "storage",
+        "webRequest",
+        "webRequestBlocking"
+    ],
+    "short_name": "Engaged"
+}
