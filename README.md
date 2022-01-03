@@ -10,7 +10,7 @@ This browser extension is specifically for Engaged users on [The WELL](https://w
 
 
 ## Installation
-The extension is currently what's known as "unpacked" and requires separate files. That means installation must be done differently than from the web store. Start by *extracting* the zip file to a folder.
+The extension is currently what's known as "unpacked" and requires separate files. That means installation must be done differently than from the web store. Start by **extracting** the zip file to a folder.
 
 ***Chrome/Brave*** - click the puzzle piece extensions icon on the right end of the address bar. Then at the bottom, click `Manage extensions`. Or use the three dots to choose `More Tools` and then `Extensions`. Or use  `chrome://extensions/` Once you see the Extensions page, enable `Developer mode` with the slider at the upper right. That will show a `Load unpacked` button in the upper left. Click and browse to the extracted folder and click `Select Folder`.
 
