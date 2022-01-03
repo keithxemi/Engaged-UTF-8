@@ -10,9 +10,9 @@ This browser extension is specifically for Engaged users on [The WELL](https://w
 
 
 ## Installation
-The extension is what's known as "unpacked" and requires separate files. That means installation must be done differently than from the web store. Start by *extracting* the zip file to a folder.
+The extension is currently what's known as "unpacked" and requires separate files. That means installation must be done differently than from the web store. Start by *extracting* the zip file to a folder.
 
-***Chrome/Brave*** - click the puzzle piece extensions icon on the right end of the address bar. Then at the bottom, click `Manage extensions`. Or use the three dots to choose `More Tools` and then `Extensions`. Or use this chrome://extensions/ Once you see the Extensions page, enable `Developer mode` with the slider at the upper right. That will show a `Load unpacked` button in the upper left. Click and browse to the extracted folder and click `Select Folder`.
+***Chrome/Brave*** - click the puzzle piece extensions icon on the right end of the address bar. Then at the bottom, click `Manage extensions`. Or use the three dots to choose `More Tools` and then `Extensions`. Or use  `chrome://extensions/` Once you see the Extensions page, enable `Developer mode` with the slider at the upper right. That will show a `Load unpacked` button in the upper left. Click and browse to the extracted folder and click `Select Folder`.
 
 ***Firefox*** - click the `Application Menu` icon on the right end of the address bar. Then choose `Add-ons and themes`. Choose `Debug Add-ons` from the gear icon below the search box in about:addons.  Or use this link `about:debugging#/runtime/this-firefox` Click the `Load Temporary Add-on...` button and open the `manifest.json` file in the extracted zip folder.
 
@@ -20,7 +20,7 @@ The extension is what's known as "unpacked" and requires separate files. That me
 
 ***Opera*** - put opera:extensions in the address bar, then turn on `Developer mode` on the top right. Then `Load unpacked` appears above.Click and browse to the extracted folder and click `Select Folder`.
 
-***Android*** - This requires using the Kiwi browser available in the Google Play Store. Then the same developer mode load unpacked installation method will work. Kiwi will need storage permission in Settings before downloading. It can install from the zip file without extracting.
+***Android*** - This requires using the Kiwi browser available in the Google Play Store. Then the same developer mode load unpacked installation method will work. Kiwi will need storage permission in Settings before downloading. It can install the extension from the zip file without extracting.
 
 *iPhone* *Safari* *iOS* - Not at this time. Ask an Apple Developer to use this open source to create this for those platforms.
 
@@ -29,11 +29,11 @@ The link at the bottom of post pages like this <Engaged UTF-8 0.1.6> will downlo
 
 
 ## Using the extension
-What it does - The extension makes two changes to the character encoding used by Engaged. Pages are viewed with the UTF-8 Unicode characters rather than ISO-8859-1, and posts are accepted with UTF-8 characters instead of ASCII. The effect is the same as what Picospan users now see and post with current versions of terminal software that use the UTF-8 characters by default.
+What it does - The extension makes two changes to the character encoding used by Engaged. Pages are shown with the UTF-8 Unicode characters rather than ISO-8859-1, and posts are accepted with UTF-8 characters instead of ASCII. The effect is the same as what Picospan users now see and post with current versions of terminal software that use the UTF-8 characters by default.
 
 ***Checkboxes*** are added to the bottom of pages that contain posts. When unchecked, Engaged users will see and post exactly as the Picospan users are doing. However, this displays the Unicode Unknown character � for posts that use the old encoding, mostly seen in quotes and apostrophes but also for many characters with diacritical marks like résumé and señor as well as € and © for example.
 
-When the box `show I�m as I'm` is checked, the extension will replace the UTF-8 version of posts with bad Unicode with the old encoding that was used to create them. This will eliminate almost all character troubles, regardless of how the original post was created. Almost all users should leave this box checked since it only affects viewing of older posts. Click `show �` to see the UTF-8 version of the posts that have this.
+When the box `show I�m as I'm` is checked, the extension will replace posts containing bad Unicode with the original post encoding that was used. This will eliminate almost all character troubles, regardless of how the original post was created. Most users will leave this box checked. Click `show �` to see the UTF-8 version of the posts that have this.
 
 The box with `post in ASCII` will translate any text in the response box into pure ASCII when checked. This prevents posting Unicode characters, they are replaced with (?), but it guarantees that no incompatible characters remain in your posts. When copy/pastecontent is used in posts, this will convert “I’m in a café sipping a €10 lattè into "I'm in a cafe sipping a EUR10 latte. Note the changed quote and missing diacritcals as well as EUR.
 
