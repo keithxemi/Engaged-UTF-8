@@ -20,7 +20,7 @@ The extension is what's known as "unpacked" and requires separate files. That me
 
 ***Opera*** - put opera:extensions in the address bar, then turn on `Developer mode` on the top right. Then `Load unpacked` appears above.Click and browse to the extracted folder and click `Select Folder`.
 
-***Android*** - This requires using the Kiwi browser available in the Google Play Store. Then the same developer mode load unpacked installation method will work.
+***Android*** - This requires using the Kiwi browser available in the Google Play Store. Then the same developer mode load unpacked installation method will work. Kiwi will need storage permission in Settings before downloading. It can install from the zip file without extracting.
 
 *iPhone* *Safari* *iOS* - Not at this time. Ask an Apple Developer to use this open source to create this for those platforms.
 
