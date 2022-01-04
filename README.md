@@ -10,15 +10,10 @@ This browser extension is specifically for Engaged users on [The WELL](https://w
 
 
 ## Installation
-The extension is currently what's known as "unpacked" and requires separate files. That means installation must be done differently than from the web store. Start by **extracting** the zip file to a folder.
 
-***Chrome/Brave*** - click the puzzle piece extensions icon on the right end of the address bar. Then at the bottom, click `Manage extensions`. Or use the three dots to choose `More Tools` and then `Extensions`. Or use  `chrome://extensions/` Once you see the Extensions page, enable `Developer mode` with the slider at the upper right. That will show a `Load unpacked` button in the upper left. Click and browse to the extracted folder and click `Select Folder`.
+***Chrome/Brave/Edge/Opera*** - Available in [Chrome Web Store](https://chrome.google.com/webstore/detail/ddlhjakddhkpcidbaabmnndhgjidjhbm)
 
 ***Firefox*** - Firefox add-on is now available for [download](https://addons.mozilla.org/addon/engaged-utf-8/) in the gallery.
-
-***Edge*** - choose Extensions in the three dot menu or use edge://extensions/ Enable `Developer mode` on the lower left and then `Load unpacked` appears above. Click and browse to the extracted folder and click `Select Folder`.
-
-***Opera*** - put opera:extensions in the address bar, then turn on `Developer mode` on the top right. Then `Load unpacked` appears above.Click and browse to the extracted folder and click `Select Folder`.
 
 ***Android*** - This requires using the Kiwi browser available in the Google Play Store. Then the same developer mode load unpacked installation method will work. Kiwi will need storage permission in Settings before downloading. It can install the extension from the zip file without extracting.
 
