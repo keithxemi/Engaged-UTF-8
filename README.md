@@ -14,7 +14,7 @@ The extension is currently what's known as "unpacked" and requires separate file
 
 ***Chrome/Brave*** - click the puzzle piece extensions icon on the right end of the address bar. Then at the bottom, click `Manage extensions`. Or use the three dots to choose `More Tools` and then `Extensions`. Or use  `chrome://extensions/` Once you see the Extensions page, enable `Developer mode` with the slider at the upper right. That will show a `Load unpacked` button in the upper left. Click and browse to the extracted folder and click `Select Folder`.
 
-***Firefox*** - click the `Application Menu` icon on the right end of the address bar. Then choose `Add-ons and themes`. Choose `Debug Add-ons` from the gear icon below the search box in about:addons.  Or use this link `about:debugging#/runtime/this-firefox` Click the `Load Temporary Add-on...` button and open the `manifest.json` file in the extracted zip folder.
+***Firefox*** - Firefox add-on is now available for [download](https://addons.mozilla.org/addon/engaged-utf-8/) in the gallery.
 
 ***Edge*** - choose Extensions in the three dot menu or use edge://extensions/ Enable `Developer mode` on the lower left and then `Load unpacked` appears above. Click and browse to the extracted folder and click `Select Folder`.
 
