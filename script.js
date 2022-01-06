@@ -1,7 +1,5 @@
-const version = 'Engaged UTF-8  0.1.6'
+const version = 'Engaged UTF-8  0.1.7'
 "use strict";
-
-function debug(msg) {}//alert(msg)}
 
 var postForm = document.getElementsByClassName("PostForm")[0]
 if (postForm) postForm.setAttribute('accept-charset','utf-8')
@@ -53,6 +51,7 @@ if (PostBox) {
   
   var verTxt = document.createElement('a')
   verTxt.setAttribute('href','https://people.well.com/user/keitht/extension.html')
+  verTxt.setAttribute('target','_blank')
   verTxt.textContent += version
   verTxt.setAttribute('style','font-size:13px;display:inline;margin-left:20px;')
   chkDiv.append(verTxt)
@@ -100,15 +99,13 @@ function mojiChange() {
 
 var postResponse = document.getElementById("Response")
 if (postResponse && translateToAscii) {
-    postResponse.addEventListener('paste', () => {setTimeout(() => {postResponse.blur()}, 30)})
-    postResponse.addEventListener('change', () => {
-        if (!translateToAscii) return
-        postResponse.value = ascii(postResponse.value)
-        var unknowns = ((postResponse.value || '').match(/(\<\?\>)/g) || []).length
-        if (unknowns > 0) msg.innerHTML = unknowns + ' unknown &lt;?&gt;'
-        else msg.innerHTML = ''
-        postResponse.focus()
-    })
+    postResponse.addEventListener('paste', () => {setTimeout(() => {
+      if (!translateToAscii) return
+          postResponse.value = ascii(postResponse.value)
+          var unknowns = ((postResponse.value || '').match(/(\<\?\>)/g) || []).length
+          if (unknowns > 0) msg.innerHTML = unknowns + ' unknown &lt;?&gt;'
+          else msg.innerHTML = ''
+    })})  
     var msg = document.getElementById("PostBoxWrapper").appendChild(document.createElement('div'))
     msg.setAttribute('style','color:red;padding:8px;')
 }
@@ -152,12 +149,9 @@ if (hasPosts) {
             if (xhr.status === 200) {
                 notNew()
                 parseAsc(xhr.responseText)
-            } else {
-              debug('ready '+xhr.statusText+' '+ascUrl.href)
             }
         }
     }
-    xhr.onerror = function () {debug(xhr.statusText+ascUrl.href)}
     xhr.send(null)
 }
 
@@ -175,11 +169,11 @@ function parseAsc(resp) {
     var ascDoc = parser.parseFromString(resp, 'text/html')
     var posts = document.querySelectorAll('div[class^="author-"]')
     var ascPosts = ascDoc.querySelectorAll('div[class^="author-"]')
-    if (posts.length !== ascPosts.length) {debug('lengths: posts' + posts.length +' acs'+ ascPosts.length);return}
+    if (posts.length !== ascPosts.length) {return}
     for (var i = 0;i < posts.length;i++){
-        if(posts[i] == undefined) {debug('posts undefined');return}
-        if(ascPosts[i] == undefined) {debug('ascposts undefined i='+i);return}
-        if (posts[i].getElementsByClassName('rpnum')[0].innerText !== ascPosts[i].getElementsByClassName('rpnum')[0].innerText) {debug('topic mismatch');return}
+        if(posts[i] == undefined) {return}
+        if(ascPosts[i] == undefined) {return}
+        if (posts[i].getElementsByClassName('rpnum')[0].innerText !== ascPosts[i].getElementsByClassName('rpnum')[0].innerText) {return}
         if (unbakeMoji && (posts[i].innerHTML.indexOf('�') > -1) )
           {
             var badPost = posts[i].innerHTML
@@ -260,15 +254,7 @@ function keycheck() {
     }
 }
 
-function pasteIn() {
-    event.preventDefault()
-    imgSrc = (event.clipboardData || window.clipboardData).getData("text")
-    newImg()
-}
-
 function newWidth() {
-    event.preventDefault()
-    event.stopPropagation()
     var formEntry = parseInt(adjust.value)
     if (isNaN(formEntry)) formEntry = 0
     var sizes = [100,140,191,276,387,543,762,1069,1500]
@@ -292,7 +278,10 @@ function addLink(){
     imgLink.value = imgSrc
     imgDiv.appendChild(imgLink)
     imgLink.addEventListener('click', function() {imgLink.select()})
-    imgLink.addEventListener('paste',pasteIn)
+    imgLink.addEventListener('paste', () => {setTimeout(() => {
+      imgSrc = imgLink.value
+      newImg()
+    })})
     imgLink.addEventListener('keydown',keycheck)
 }
 
