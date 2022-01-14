@@ -1,4 +1,4 @@
-const version = 'Engaged UTF-8  0.1.7'
+const version = 'Engaged UTF-8  0.1.8'
 "use strict";
 
 var postForm = document.getElementsByClassName("PostForm")[0]
@@ -101,10 +101,10 @@ var postResponse = document.getElementById("Response")
 if (postResponse && translateToAscii) {
     postResponse.addEventListener('paste', () => {setTimeout(() => {
       if (!translateToAscii) return
-          postResponse.value = ascii(postResponse.value)
-          var unknowns = ((postResponse.value || '').match(/(\<\?\>)/g) || []).length
-          if (unknowns > 0) msg.innerHTML = unknowns + ' unknown &lt;?&gt;'
-          else msg.innerHTML = ''
+      postResponse.value = ascii(postResponse.value)
+      var unknowns = ((postResponse.value || '').match(/(\[\-\])/g) || []).length
+      if (unknowns > 0) msg.innerHTML = unknowns + ' unknown [-]'
+      else msg.innerHTML = ''
     })})  
     var msg = document.getElementById("PostBoxWrapper").appendChild(document.createElement('div'))
     msg.setAttribute('style','color:red;padding:8px;')
@@ -140,7 +140,7 @@ if (hasPosts) {
     }
 }
 
-if (hasPosts) {
+if (hasPosts && unbakeMoji) {
     var xhr = new XMLHttpRequest()
     xhr.overrideMimeType(`text/html; charset=ISO-8859-1`)
     xhr.open("GET", ascUrl, true)
@@ -174,8 +174,7 @@ function parseAsc(resp) {
         if(posts[i] == undefined) {return}
         if(ascPosts[i] == undefined) {return}
         if (posts[i].getElementsByClassName('rpnum')[0].innerText !== ascPosts[i].getElementsByClassName('rpnum')[0].innerText) {return}
-        if (unbakeMoji && (posts[i].innerHTML.indexOf('�') > -1) )
-          {
+        if (posts[i].innerHTML.indexOf('�') > -1){
             var badPost = posts[i].innerHTML
             posts[i].innerHTML = ascPosts[i].innerHTML
             var badUTF = document.createElement('div')
@@ -186,8 +185,20 @@ function parseAsc(resp) {
             else badUTF.innerHTML = '<pre class="showBad" tabindex="0">show �</pre><div class="unknown">' + badPost
             badUTF.querySelector(".ResponseSeparator").style = 'opacity:50%;'
             posts[i].append(badUTF)
-          }
+        }
+        var postText = posts[i].querySelector(".Post")
+        if (postText) postText.innerHTML = postText.innerHTML.replace(/&amp;#(\d+);/g,decodeHtml)      
+        posts[i].innerHTML = posts[i].innerHTML.replace(/\u2028/g,'\n')
+        posts[i].innerHTML = posts[i].innerHTML.replace(/\u2029/g,'\n\n')
     }
+}
+
+function decodeHtml(match) {
+    var txt = document.createElement("textarea")
+    txt.innerHTML = match
+    txt.value = txt.value.replace('&#8232;','\n')
+    txt.value = txt.value.replace('&#8233;','\n\n')
+    return txt.value
 }
 
 var originalPost
@@ -216,12 +227,15 @@ function mainImg() {
 
 function badLink() {
     postResponse.value = originalPost
-    imgLink.value = ''
+    imgLink.value = '*** Could not load image link ***'      
+    if(imgSrc === '?') imgLink.value = '*** Insecure image links are blocked (must be HTTPS://) ***'
 }
 
 function newImg() {
     undoLink = imgLink.value
     imgLink.value = imgSrc
+    badMsg = ''
+    if(imgSrc.indexOf('http://') > -1) imgSrc = '?'
     hiddenImg.setAttribute('src', imgSrc)
     previewImg.setAttribute('src', imgSrc)
     if (hiddenImg.complete) {
@@ -440,7 +454,10 @@ function ascii(p) {
     p = p.replace(/Ž/g, 'Z')
     p = p.replace(/ž/g, 'z')
     p = p.replace(/[\u2000-\u200a\u202f\u205f\u3000]/g,' ')//spaces
-    p = p.replace(/[\u200b\ufeff]/g,'')//zero width spaces
-    p = p.replace(/[^\x00-\x7F]/g,'(?)')//unknown non-ascii
+    p = p.replace(/[\u200b\u200d\u2060-\u2064\ufeff]/g,'')//zero width spaces
+    p = p.replace(/[\u2011]/g,'-')
+    p = p.replace(/[\u2028]/g,'\n')//line separator
+    p = p.replace(/[\u2029]/g,'\n\n')//paragraph separator
+    p = p.replace(/[^\x00-\x7F]/g,'[-]')//unknown non-ascii
     return(p)
 }
