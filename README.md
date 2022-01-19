@@ -15,7 +15,7 @@ This browser extension is specifically for Engaged users on [The WELL](https://w
 
 ***Firefox*** - Firefox add-on is now available for [download](https://addons.mozilla.org/addon/engaged-utf-8/) in the gallery.
 
-***Android*** - This requires using the Kiwi browser available in the Google Play Store. Then the same developer mode load unpacked installation method will work. Kiwi will need storage permission in Settings before downloading. It can install the extension from the zip file without extracting.
+***Android*** - This requires using the open source Chrome browser Kiwi, available in the Google Play Store. The extension will load from the Chrome Web Store link.
 
 *iPhone* *Safari* *iOS* - Not at this time. Ask an Apple Developer to use this open source to create this for those platforms.
 
