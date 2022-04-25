@@ -1,4 +1,4 @@
-const version = 'Engaged UTF-8  0.1.8'
+const version = 'Engaged UTF-8  0.1.9'
 "use strict";
 
 var postForm = document.getElementsByClassName("PostForm")[0]
@@ -281,7 +281,7 @@ function newWidth() {
     previewImg.setAttribute("width",imgWidth)
     var postSize = imgWidth
     if (postSize === ' ') postSize = hiddenImg.width
-    postResponse.value = originalPost + '\\<img src="'+ imgSrc + '" width=' + imgWidth + '>'
+    postResponse.value = originalPost + '\\<img src="'+ imgSrc + '" width=' + imgWidth + '>' + '\n\n<' + imgSrc + '>'
 }
 
 function addLink(){
