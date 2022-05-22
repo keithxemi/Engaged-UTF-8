@@ -1,4 +1,4 @@
-const version = 'Engaged UTF-8  0.1.9'
+const version = 'Engaged UTF-8  0.1.10'
 "use strict";
 
 var postForm = document.getElementsByClassName("PostForm")[0]
@@ -190,6 +190,8 @@ function parseAsc(resp) {
         if (postText) postText.innerHTML = postText.innerHTML.replace(/&amp;#(\d+);/g,decodeHtml)      
         posts[i].innerHTML = posts[i].innerHTML.replace(/\u2028/g,'\n')
         posts[i].innerHTML = posts[i].innerHTML.replace(/\u2029/g,'\n\n')
+        posts[i].innerHTML = posts[i].innerHTML.replace(/target="_blank">/g,'target="_blank" rel="noreferrer">')//external link in post
+        posts[i].innerHTML = posts[i].innerHTML.replace(/&amp;f=h">/g,'&amp;f=h" target="_blank">')//open bio in new tab
     }
 }
 
